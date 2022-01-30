@@ -25,7 +25,7 @@ def plot():
 
     tcs = yf.download(stock, start, end)
 
-    tcs['Open'].plot(label='APPL', figsize=(15, 7))
+    tcs['Open'].plot(label=stock, figsize=(15, 7))
 
     plt.title('Stock Prices of TCS, Infosys and Wipro')
     plt.legend()
