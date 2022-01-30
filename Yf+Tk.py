@@ -10,9 +10,7 @@ from pandas.plotting import scatter_matrix
 import yfinance as yf
 from tkinter import *
 import tkinter as tk
-# plot function is created for
-# plotting the graph in
-# tkinter window
+
 
 
 def PlotStockInfo():
@@ -54,5 +52,5 @@ plot_button = Button(master=window,command=PlotStockInfo,
 
 plot_button.pack()
 
-# run the gui
+
 window.mainloop()
