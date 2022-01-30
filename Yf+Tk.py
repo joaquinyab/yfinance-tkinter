@@ -1,56 +1,74 @@
 from tkinter import *
-from matplotlib.figure import Figure
-
 import yfinance as yf
-import pandas as pd
 from datetime import date
-import numpy as np
 import matplotlib.pyplot as plt
-from pandas.plotting import scatter_matrix
 import yfinance as yf
 from tkinter import *
-import tkinter as tk
 
 
 
-def PlotStockInfo():
+
+def plot():
 
 
-    
-    stock = str(STOCK.get())
-    start = "2010-01-01"
+
+ 
+    ticker1 = str(STOCK.get())
+    ticker2 = str(STOCK2.get())
+    start = "2012-01-01"
     end = date.today()
 
-    tcs = yf.download(stock, start, end)
+    if len(STOCK2.get()) == 0:
+        stock1 = yf.download(ticker1, start, end)
+        stock1['Open'].plot(label=ticker1, figsize=(15, 7))
 
-    tcs['Open'].plot(label=stock, figsize=(15, 7))
+        plt.show()
 
-    plt.title('Stock Prices of TCS, Infosys and Wipro')
-    plt.legend()
-    plt.show()
+    else:
 
+        stock1 = yf.download(ticker1, start, end)
+        stock2 = yf.download(ticker2,start,end)
     
 
+        stock1['Open'].plot(label=ticker1, figsize=(15, 7))
+        stock2['Open'].plot(label=ticker2, figsize=(15, 7))
+    
 
+        plt.title('Stock Prices of TCS, Infosys and Wipro')
+        plt.legend()
+        plt.show()
+
+
+
+    
 window = Tk()
 
 
-window.title('Serach any ticker')
+
+window.title('Plotting in Tkinter')
+window.geometry("400x400")
+
+window.resizable(False, False)
 
 
-window.geometry("500x500")
+
 
 STOCK = Entry(window)
 STOCK.pack()
 
+STOCK2 = Entry(window)
+STOCK2.pack()
 
-plot_button = Button(master=window,command=PlotStockInfo,
+
+
+
+plot_button = Button(master=window,
+                     command=plot,
                      height=2,
                      width=10,
                      text="Plot")
 
 
 plot_button.pack()
-
 
 window.mainloop()
