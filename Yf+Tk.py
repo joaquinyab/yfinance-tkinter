@@ -15,9 +15,9 @@ import tkinter as tk
 # tkinter window
 
 
-def plot():
+def PlotStockInfo():
 
-    # the figure that will contain the plot
+
     
     stock = str(STOCK.get())
     start = "2010-01-01"
@@ -33,32 +33,25 @@ def plot():
 
     
 
-    # creating the Tkinter canvas
-    # containing the Matplotlib figure
 
-
-
-# the main Tkinter window
 window = Tk()
 
-# setting the title
-window.title('Plotting in Tkinter')
 
-# dimensions of the main window
+window.title('Serach any ticker')
+
+
 window.geometry("500x500")
 
 STOCK = Entry(window)
 STOCK.pack()
 
-# button that displays the plot
-plot_button = Button(master=window,
-                     command=plot,
+
+plot_button = Button(master=window,command=PlotStockInfo,
                      height=2,
                      width=10,
                      text="Plot")
 
-# place the button
-# in main window
+
 plot_button.pack()
 
 # run the gui
